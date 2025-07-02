@@ -50,10 +50,10 @@
                 <strong>DietaIA</strong>
             </a>
             <div class="ms-auto">
-                <a href="registro.php" class="btn btn-outline-primary me-2">
+                <a href="views/registro.php" class="btn btn-outline-primary me-2">
                     <i class="fa fa-user-plus"></i> Registrarse
                 </a>
-                <a href="login.php" class="btn btn-primary">
+                <a href="views/login.php" class="btn btn-primary">
                     <i class="fa fa-sign-in-alt"></i> Iniciar sesión
                 </a>
             </div>
@@ -76,7 +76,7 @@
                     <li><i class="fa fa-check text-success me-2"></i> Tener en cuenta alergias, intolerancias y enfermedades</li>
                     <li><i class="fa fa-check text-success me-2"></i> Seguir un estilo de vida saludable basado en la dieta mediterránea</li>
                 </ul>
-                <a href="registro.php" class="btn btn-lg btn-success mt-4">
+                <a href="views/registro.php" class="btn btn-lg btn-success mt-4">
                     <i class="fa fa-rocket me-2"></i> ¡Empieza ahora!
                 </a>
             </div>
