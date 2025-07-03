@@ -65,7 +65,7 @@
                     Para personalizar tu dieta necesitamos conocer algunos datos personales y de salud. ¡Tu información estará segura con nosotros!
                 </p>
 
-                <form action="registro_controller.php" method="POST">
+                <form action="../controllers/registro_controller.php" method="POST">
                     <!-- Nombre y Apellido -->
                     <div class="row mb-3">
                         <div class="col-md-6">
