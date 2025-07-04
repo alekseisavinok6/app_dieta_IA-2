@@ -4,6 +4,10 @@ body {
     flex-direction: column;
 }
 
+h3 {
+    font-size: 22px;
+}
+
 main {
     flex: 1;
 }
@@ -27,5 +31,5 @@ footer {
     padding: 2rem;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }

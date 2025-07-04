@@ -40,8 +40,8 @@ if (!in_array($sexo, ['hombre', 'mujer'])) {
 }
 
 // Convertir talla de cm a metros
-if(!empty($talla)) {
-    $talla = $talla / 100; 
+if (!empty($talla)) {
+    $talla = $talla / 100;
 }
 
 // ¿Correo ya registrado?
@@ -61,8 +61,8 @@ if (!empty($errores)) {
     foreach ($errores as $error) {
         echo "<li>" . $error . "</li>";
     }
-    echo "</ul><a href='registro.php'>Volver al registro</a>";
-    exit;
+    echo "</ul><a href='../views/registro.php'>Volver al registro</a>";
+    exit();
 }
 
 // Encriptar la contraseña
@@ -75,8 +75,17 @@ $stmt = $conn->prepare("INSERT INTO usuarios
 
 $stmt->bind_param(
     "sssddisssss",
-    $nombre, $apellido, $correo, $peso, $talla, $edad, $sexo,
-    $alergenos, $intolerancias, $enfermedades, $contrasena_hash
+    $nombre,
+    $apellido,
+    $correo,
+    $peso,
+    $talla,
+    $edad,
+    $sexo,
+    $alergenos,
+    $intolerancias,
+    $enfermedades,
+    $contrasena_hash
 );
 
 if ($stmt->execute()) {
@@ -89,4 +98,3 @@ if ($stmt->execute()) {
 
 $stmt->close();
 $conn->close();
-?>

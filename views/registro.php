@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="../imgs/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../style.css">    
+    <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
@@ -34,9 +36,6 @@
         <div class="container my-5">
             <div class="form-section">
                 <h2 class="text-center mb-4">Crea tu cuenta</h2>
-                <p class="text-center text-muted mb-4">
-                    Para personalizar tu dieta necesitamos conocer algunos datos personales y de salud. ¡Tu información estará segura con nosotros!
-                </p>
 
                 <form action="../controllers/registro_controller.php" method="POST">
                     <!-- Nombre y Apellido -->
@@ -86,7 +85,7 @@
                     <!-- Alérgenos -->
                     <div class="mb-3">
                         <label for="alergenos" class="form-label">Alérgenos</label>
-                        <input type="text" class="form-control" id="alergenos" name="alergenos" placeholder="Ej: gluten, marisco... o escribe 'ninguna'" required>
+                        <input type="text" class="form-control" id="alergenos" name="alergenos" placeholder="Ej: gluten, marisco... o escribe 'ningún'" required>
                     </div>
 
                     <!-- Intolerancias -->
@@ -145,4 +144,5 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
