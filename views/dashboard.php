@@ -33,9 +33,6 @@ if (!isset($_SESSION['usuario_id'])) {
             <div class="ms-auto">
                 <a href="../index.php" class="btn btn-outline-secondary me-2">
                     <i class="fas fa-home"></i> Volver al inicio
-                </a>            
-                <a href="logout.php" class="btn btn-outline-danger">
-                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión
                 </a>
             </div>
         </div>

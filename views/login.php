@@ -28,34 +28,26 @@
     </nav>
 
     <!-- Contenido -->
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-
-                <h2 class="mb-4 text-center">Inicia sesión para acceder a tus dietas personalizadas</h2>
-
-                <!-- Formulario de inicio de sesión -->
-                <form action="../controllers/login_controller.php" method="POST" class="border p-4 rounded shadow-sm bg-light">
-                    <div class="mb-3">
-                        <label for="correo" class="form-label">Correo electrónico</label>
-                        <input type="email" name="correo" id="correo" class="form-control" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="contrasena" class="form-label">Contraseña</label>
-                        <input type="password" name="contrasena" id="contrasena" class="form-control" required>
-                    </div>
-
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</button>
-                    </div>
-                </form>
-
-                <!-- Enlace a registro -->
-                <div class="text-center mt-3">
-                    ¿No tienes una cuenta? <a href="registro.php">Registrarse</a>
+    <div class="container my-5">
+        <div class="form-section" style="max-width: 450px;">
+            <h2 class="text-center mb-4">Inicia sesión</h2>
+            <form action="../controllers/login_controller.php" method="POST">
+                <div class="mb-4">
+                    <label for="correo" class="form-label">Correo electrónico</label>
+                    <input type="email" name="correo" id="correo" class="form-control" required>
                 </div>
 
+                <div class="mb-4">
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <input type="password" name="contrasena" id="contrasena" class="form-control" required>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                ¿No tienes una cuenta? <a href="registro.php">Registrarse</a>
             </div>
         </div>
     </div>

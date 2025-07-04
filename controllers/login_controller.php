@@ -42,8 +42,8 @@ if ($resultado->num_rows === 1) {
         $_SESSION['enfermedades'] = $usuario['enfermedades'];
         $_SESSION['fecha_registro'] = $usuario['fecha_registro'];
 
-        // Redirigir al panel o dashboard
-        header("Location: ../views/dashboard.php");
+        // Redirigir al index.php
+        header("Location: ../index.php");
         exit();
     } else {
         // Contraseña incorrecta

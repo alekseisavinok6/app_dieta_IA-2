@@ -113,8 +113,8 @@
                     </div>
 
                     <!-- Botón de Registro -->
-                    <div class="d-grid mb-3">
-                        <button type="submit" class="btn btn-success">
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fa fa-user-plus me-2"></i> Registrarse
                         </button>
                     </div>

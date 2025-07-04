@@ -24,14 +24,25 @@ session_start();
                 <img src="imgs/logo.png" alt="DietaIA" width="46" class="me-3">
                 <strong>DietaIA</strong>
             </a>
-            <div class="ms-auto">
-                <a href="views/registro.php" class="btn btn-outline-primary me-2">
-                    <i class="fa fa-user-plus"></i> Registrarse
-                </a>
-                <a href="views/login.php" class="btn btn-primary">
-                    <i class="fa fa-sign-in-alt"></i> Iniciar sesión
-                </a>
-            </div>
+            <?php if (isset($_SESSION['usuario_id'])): ?>
+                <div class="ms-auto">
+                    <a href="views/dashboard.php" class="btn btn-outline-primary me-2">
+                        <i class="fa-solid fa-gauge-simple-high"></i> Panel de usuario
+                    </a>
+                    <a href="views/logout.php" class="btn btn-outline-danger">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </a>
+                </div>
+            <?php else: ?>
+                <div class="ms-auto">
+                    <a href="views/registro.php" class="btn btn-outline-primary me-2">
+                        <i class="fa fa-user-plus"></i> Registrarse
+                    </a>
+                    <a href="views/login.php" class="btn btn-outline-success">
+                        <i class="fa fa-sign-in-alt"></i> Iniciar sesión
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
     </nav>
 
@@ -51,9 +62,15 @@ session_start();
                     <li><i class="fa fa-check text-success me-2"></i> Tener en cuenta alergias, intolerancias y enfermedades</li>
                     <li><i class="fa fa-check text-success me-2"></i> Seguir un estilo de vida saludable basado en la dieta mediterránea</li>
                 </ul>
-                <a href="views/registro.php" class="btn btn-lg btn-success mt-4">
-                    <i class="fa fa-rocket me-2"></i> ¡Empieza ahora!
-                </a>
+                <?php if (isset($_SESSION['usuario_id'])): ?>
+                    <a href="views/registro.php" class="btn btn-lg btn-success mt-4">
+                        <i class="fa-solid fa-lock-open"></i> Crear una dieta
+                    </a>
+                <?php else: ?>
+                    <a href="#" class="btn btn-lg btn-secondary mt-4">
+                        <i class="fa-solid fa-lock"></i>
+                    </a>
+                <?php endif; ?>
             </div>
         </section>
     </main>
