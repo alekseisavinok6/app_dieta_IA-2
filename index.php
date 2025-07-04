@@ -1,4 +1,3 @@
-<!-- index.php -->
 <?php
 // Aquí podrías iniciar sesión si fuera necesario más adelante
 ?>
@@ -9,44 +8,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DietaIA - Inicio</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <!-- Favicon opcional -->
-    <link rel="icon" href="logo.png" type="image/png">
-    <style>
-        body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
-
-        main {
-            flex: 1;
-        }
-
-        footer {
-            background-color: #f8f9fa;
-            text-align: center;
-            padding: 1rem 0;
-            font-size: 0.9rem;
-        }
-
-        .hero {
-            padding: 4rem 2rem;
-            text-align: center;
-            background: linear-gradient(to right, #f8f9fa, #e9ecef);
-        }
-    </style>
+    <link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <img src="imgs/logo.png" alt="DietaIA" width="42" class="me-2">
+                <img src="imgs/logo.png" alt="DietaIA" width="46" class="me-3">
                 <strong>DietaIA</strong>
             </a>
             <div class="ms-auto">

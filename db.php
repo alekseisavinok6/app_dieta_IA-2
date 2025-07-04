@@ -2,8 +2,8 @@
 // db.php - Archivo de conexión a la base de datos
 
 $host = '127.0.0.1';
-$usuario = 'root';       // Cambia si usas otro usuario
-$contrasena = '';        // Cambia si tienes contraseña en tu MySQL
+$usuario = 'root';
+$contrasena = '';       
 $base_datos = 'dieta_app2';
 
 // Crear conexión

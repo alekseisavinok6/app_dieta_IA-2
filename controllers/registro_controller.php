@@ -39,6 +39,11 @@ if (!in_array($sexo, ['hombre', 'mujer'])) {
     $errores[] = "Sexo biológico no válido.";
 }
 
+// Convertir talla de cm a metros
+if(!empty($talla)) {
+    $talla = $talla / 100; 
+}
+
 // ¿Correo ya registrado?
 $stmt = $conn->prepare("SELECT id FROM usuarios WHERE correo = ?");
 $stmt->bind_param("s", $correo);
