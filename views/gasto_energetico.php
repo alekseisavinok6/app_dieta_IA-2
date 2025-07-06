@@ -104,11 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="../style.css">
 </head>
 
-<script>
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-</script>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
@@ -128,9 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Contenido -->
     <div class="container my-5">
         <div class="form-section" style="max-width: 450px;">
-            <h3 class="text-center mb-4"><i class="fa-solid fa-clipboard"></i> <i>Paso 1: Estudio antropométrico</i>
-            <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Medición de tu peso, talla e IMC para calcular tus necesidades nutricionales"></i>
-            </h3>
+            <h3 class="text-center mb-4">Paso 1: Estudio antropométrico <i class="fa-solid fa-clipboard"></i></h3>
             <?php if (isset($mensaje)): ?>
                 <p style="color:green;"><?= $mensaje ?></p>
             <?php elseif (isset($error)): ?>
@@ -149,29 +142,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         value="<?= $_SESSION['talla'] ?>">
                 </div>
 
-                <div>
-                    <strong>IMC:</strong> 
-                    <?= $_SESSION['imc'] ?>
-                    <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Índice de Masa Corporal (IMC) es la relación entre tu peso y tu altura"></i>
-                </div>
-                <div>
-                    <strong>Peso ideal:</strong> 
-                    <?= $_SESSION['peso_ideal'] ?> kg
-                    <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Peso estimado en el que se considera que tienes un estado de salud óptimo"></i>
-                </div>
-                <div>
-                    <strong>Clasificación OMC:</strong> 
-                    <?= ucfirst($_SESSION['clasificacion']) ?>
-                    <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Categoría de tu peso según la Organización Mundial de la Salud (OMS) (ej: normal, sobrepeso, obesidad...)"></i>
-                </div><br>
+                <div><strong>IMC:</strong> <?= $_SESSION['imc'] ?></div>
+                <div><strong>Peso Ideal:</strong> <?= $_SESSION['peso_ideal'] ?> kg</div>
+                <div><strong>Clasificación:</strong> <?= ucfirst($_SESSION['clasificacion']) ?></div><br>
 
                 <div class="text-start">
                     <button type="submit" class="btn btn-warning"><i class="fa-solid fa-calculator"></i> Calcular</button>
                 </div><br>
                 <div class="text-start">
-                    <a href="gasto_energetico.php" class="btn btn-light btn-sm">
-                    <i class="fa-regular fa-hand-point-right"></i> Siguiente paso
-                    </a>
+                    <a href="calcular_geb.php"><button class="btn btn-light btn-sm">
+                    <i class="fa-regular fa-hand-point-right"></i> Siguiente paso</button></a>
+                </div><br>
+                <div class="text-start">
+                    <a href="estudio_antropometrico.php"><button class="btn btn-light btn-sm">
+                    <i class="fa-regular fa-hand-point-left"></i> Atrás</button></a>
                 </div>
             </form>
         </div>

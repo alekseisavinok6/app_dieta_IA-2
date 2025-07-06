@@ -16,8 +16,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="../index.php">
-                <img src="../imgs/logo.png" alt="DietaIA" width="46" class="me-3">
-                <strong>DietaIA</strong>
+                <img src="../imgs/logo-2.png" alt="DietaIA" width="46" class="me-3">
+                <i class="logo">DietaIA</i>
             </a>
             <div class="ms-auto">
                 <a href="../index.php" class="btn btn-outline-secondary">
