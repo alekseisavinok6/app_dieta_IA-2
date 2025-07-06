@@ -24,9 +24,9 @@ session_start();
                 <img src="imgs/logo.png" alt="DietaIA" width="46" class="me-3">
                 <strong>DietaIA</strong>
             </a>
-            <?php if (isset($_SESSION['usuario_id'])): ?>
+            <?php if (isset($_SESSION['id'])): ?>
                 <div class="ms-auto">
-                    <a href="views/dashboard.php" class="btn btn-outline-primary me-2">
+                    <a href="views/dashboard.php" class="btn btn-outline-info me-2">
                         <i class="fa-solid fa-gauge-simple-high"></i> Panel de usuario
                     </a>
                     <a href="views/logout.php" class="btn btn-outline-danger">
@@ -62,8 +62,8 @@ session_start();
                     <li><i class="fa fa-check text-success me-2"></i> Tener en cuenta alergias, intolerancias y enfermedades</li>
                     <li><i class="fa fa-check text-success me-2"></i> Seguir un estilo de vida saludable basado en la dieta mediterránea</li>
                 </ul>
-                <?php if (isset($_SESSION['usuario_id'])): ?>
-                    <a href="views/registro.php" class="btn btn-lg btn-success mt-4">
+                <?php if (isset($_SESSION['id'])): ?>
+                    <a href="views/estudio_antropometrico.php" class="btn btn-lg btn-warning mt-4">
                         <i class="fa-solid fa-lock-open"></i> Crear una dieta
                     </a>
                 <?php else: ?>
@@ -77,13 +77,9 @@ session_start();
 
     <!-- FOOTER -->
     <footer>
-        <div class="container">
+        <div class="text-center p-3">
             <p class="mb-1">© 2025 <strong>DietaIA</strong>. Reservados todos los derechos.</p>
-            <p class="mb-0">
-                <i class="fa fa-phone"></i> +34 123 456 789 &nbsp; | &nbsp;
-                <i class="fa fa-envelope"></i> info@dieta-ia.com &nbsp; | &nbsp;
-                <i class="fa fa-map-marker-alt"></i> Calle Ficticia 123, 28013 Madrid, España
-            </p>
+            📞 +34 123 456 789 | 📧 info@dieta-ia.com | 📍 Calle Ficticia 123, 28013 Madrid, España
         </div>
     </footer>
 

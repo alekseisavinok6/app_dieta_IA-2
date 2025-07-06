@@ -14,7 +14,23 @@ if (empty($correo) || empty($contrasena)) {
 
 // Buscar al usuario por correo
 $stmt = $conn->prepare(
-    "SELECT id, nombre, apellido, correo, contrasena_hash, peso, talla, edad, sexo, alergenos, intolerancias, enfermedades, fecha_registro 
+    "SELECT 
+    id, 
+    nombre, 
+    apellido, 
+    correo, 
+    contrasena_hash, 
+    peso, 
+    peso_ideal, 
+    talla, 
+    edad, 
+    sexo, 
+    alergenos, 
+    intolerancias, 
+    enfermedades, 
+    clasificacion, 
+    imc, 
+    fecha_registro 
     FROM usuarios 
     WHERE correo = ?"
     );
@@ -29,17 +45,20 @@ if ($resultado->num_rows === 1) {
     if (password_verify($contrasena, $usuario['contrasena_hash'])) {
 
         // Guardar datos en la sesión
-        $_SESSION['usuario_id'] = $usuario['id'];
+        $_SESSION['id'] = $usuario['id'];
         $_SESSION['nombre'] = $usuario['nombre'];
         $_SESSION['apellido'] = $usuario['apellido'];
         $_SESSION['correo'] = $usuario['correo'];
         $_SESSION['peso'] = $usuario['peso'];
+        $_SESSION['peso_ideal'] = $usuario['peso_ideal'];
+        $_SESSION['clasificacion'] = $usuario['clasificacion'];
         $_SESSION['talla'] = $usuario['talla'];
         $_SESSION['edad'] = $usuario['edad'];
         $_SESSION['sexo'] = $usuario['sexo'];
         $_SESSION['alergenos'] = $usuario['alergenos'];
         $_SESSION['intolerancias'] = $usuario['intolerancias'];
         $_SESSION['enfermedades'] = $usuario['enfermedades'];
+        $_SESSION['imc'] = $usuario['imc'];
         $_SESSION['fecha_registro'] = $usuario['fecha_registro'];
 
         // Redirigir al index.php

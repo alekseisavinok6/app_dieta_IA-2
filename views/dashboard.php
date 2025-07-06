@@ -2,7 +2,7 @@
 session_start();
 
 // Verificar que el usuario haya iniciado sesión
-if (!isset($_SESSION['usuario_id'])) {
+if (!isset($_SESSION['id'])) {
     header("Location: login.php");
     exit();
 }
@@ -41,31 +41,30 @@ if (!isset($_SESSION['usuario_id'])) {
     <!-- Contenido -->
         <div class="container my-5">
             <div class="form-section">
-                <h3 class="text-center">Información personal:</h3>
-                <div>Id: <i><?= $_SESSION['usuario_id']; ?></i></div>
+                <h3 class="text-center"><i class="fa-solid fa-user"></i> Información personal:</h3><br>
+                <div>Alta: <i><?= $_SESSION['fecha_registro']; ?></i></div><br> 
+                <div>Id: <i><?= $_SESSION['id']; ?></i></div>
                 <div>Nombre: <i><?= $_SESSION['nombre']; ?></i></div>
                 <div>Apellido: <i><?= $_SESSION['apellido']; ?></i></div>
                 <div>Correo: <i><?= $_SESSION['correo']; ?></i></div>
-                <div>Peso: <i><?= $_SESSION['peso']; ?></i></div>
-                <div>Talla: <i><?= $_SESSION['talla']; ?></i></div>
                 <div>Edad: <i><?= $_SESSION['edad']; ?></i></div>
+                <div>Talla: <i><?= $_SESSION['talla']; ?></i></div>
+                <div>Peso: <i><?= $_SESSION['peso']; ?></i></div>
+                <div>Peso ideal: <i><?= $_SESSION['peso_ideal']; ?></i></div>
+                <div>Clasificación: <i><?= $_SESSION['clasificacion']; ?></i></div>                
                 <div>Sexo biológico: <i><?= $_SESSION['sexo']; ?></i></div>
                 <div>Alergenos: <i><?= $_SESSION['alergenos']; ?></i></div>
                 <div>Intolerancias: <i><?= $_SESSION['intolerancias']; ?></i></div>
                 <div>Enfermedades: <i><?= $_SESSION['enfermedades']; ?></i></div>
-                <div>Alta: <i><?= $_SESSION['fecha_registro']; ?></i></div>                
+                <div>Imc: <i><?= $_SESSION['imc']; ?></i></div>              
             </div>
         </div>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
+        <div class="text-center p-3">
             <p class="mb-1">© 2025 <strong>DietaIA</strong>. Reservados todos los derechos.</p>
-            <p class="mb-0">
-                <i class="fa fa-phone"></i> +34 123 456 789 &nbsp; | &nbsp;
-                <i class="fa fa-envelope"></i> info@dieta-ia.com &nbsp; | &nbsp;
-                <i class="fa fa-map-marker-alt"></i> Calle Ficticia 123, 28013 Madrid, España
-            </p>
+            📞 +34 123 456 789 | 📧 info@dieta-ia.com | 📍 Calle Ficticia 123, 28013 Madrid, España
         </div>
     </footer>
 

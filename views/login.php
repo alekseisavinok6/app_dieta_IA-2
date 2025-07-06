@@ -30,7 +30,7 @@
     <!-- Contenido -->
     <div class="container my-5">
         <div class="form-section" style="max-width: 450px;">
-            <h2 class="text-center mb-4">Inicia sesión</h2>
+            <h3 class="text-center mb-4">Inicia sesión</h3>
             <form action="../controllers/login_controller.php" method="POST">
                 <div class="mb-4">
                     <label for="correo" class="form-label">Correo electrónico</label>
@@ -54,13 +54,9 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
+        <div class="text-center p-3">
             <p class="mb-1">© 2025 <strong>DietaIA</strong>. Reservados todos los derechos.</p>
-            <p class="mb-0">
-                <i class="fa fa-phone"></i> +34 123 456 789 &nbsp; | &nbsp;
-                <i class="fa fa-envelope"></i> info@dieta-ia.com &nbsp; | &nbsp;
-                <i class="fa fa-map-marker-alt"></i> Calle Ficticia 123, 28013 Madrid, España
-            </p>
+            📞 +34 123 456 789 | 📧 info@dieta-ia.com | 📍 Calle Ficticia 123, 28013 Madrid, España
         </div>
     </footer>
 

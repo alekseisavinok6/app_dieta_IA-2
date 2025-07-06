@@ -35,7 +35,7 @@
     <main>
         <div class="container my-5">
             <div class="form-section">
-                <h2 class="text-center mb-4">Crea tu cuenta</h2>
+                <h3 class="text-center mb-4">Crea tu cuenta</h3>
 
                 <form action="../controllers/registro_controller.php" method="POST">
                     <!-- Nombre y Apellido -->
@@ -60,11 +60,11 @@
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="peso" class="form-label">Peso (kg)</label>
-                            <input type="number" step="0.1" class="form-control" id="peso" name="peso" placeholder="(ej. 75)" required>
+                            <input type="number" step="0.01" class="form-control" id="peso" name="peso" placeholder="(ej. 75)" required>
                         </div>
                         <div class="col-md-4">
                             <label for="talla" class="form-label">Talla (cm)</label>
-                            <input type="number" step="0.1" class="form-control" id="talla" name="talla" placeholder="(ej. 175)" required>
+                            <input type="number" step="0.01" class="form-control" id="talla" name="talla" placeholder="(ej. 175)" required>
                         </div>
                         <div class="col-md-4">
                             <label for="edad" class="form-label">Edad</label>
@@ -131,13 +131,9 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="container">
+        <div class="text-center p-3">
             <p class="mb-1">© 2025 <strong>DietaIA</strong>. Reservados todos los derechos.</p>
-            <p class="mb-0">
-                <i class="fa fa-phone"></i> +34 123 456 789 &nbsp; | &nbsp;
-                <i class="fa fa-envelope"></i> info@dieta-ia.com &nbsp; | &nbsp;
-                <i class="fa fa-map-marker-alt"></i> Calle Ficticia 123, 28013 Madrid, España
-            </p>
+            📞 +34 123 456 789 | 📧 info@dieta-ia.com | 📍 Calle Ficticia 123, 28013 Madrid, España
         </div>
     </footer>
 
