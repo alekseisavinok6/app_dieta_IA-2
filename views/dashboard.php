@@ -51,12 +51,16 @@ if (!isset($_SESSION['id'])) {
                 <div>Talla: <i><?= $_SESSION['talla']; ?></i></div>
                 <div>Peso: <i><?= $_SESSION['peso']; ?></i></div>
                 <div>Peso ideal: <i><?= $_SESSION['peso_ideal']; ?></i></div>
-                <div>Clasificación: <i><?= $_SESSION['clasificacion']; ?></i></div>                
+                <div>Clasificación: <i><?= $_SESSION['clasificacion']; ?></i></div>    
+                <div>Nivel de actividad: <i><?= $_SESSION['actividad']; ?></i></div>
                 <div>Sexo biológico: <i><?= $_SESSION['sexo']; ?></i></div>
                 <div>Alergenos: <i><?= $_SESSION['alergenos']; ?></i></div>
                 <div>Intolerancias: <i><?= $_SESSION['intolerancias']; ?></i></div>
                 <div>Enfermedades: <i><?= $_SESSION['enfermedades']; ?></i></div>
-                <div>Imc: <i><?= $_SESSION['imc']; ?></i></div>              
+                <div>IMC: <i><?= $_SESSION['imc']; ?></i></div>
+                <div>GEB: <i><?= $_SESSION['calculo_energetico']['geb']; ?></i></div>  
+                <div>GET: <i><?= $_SESSION['calculo_energetico']['get1']; ?></i></div>  
+                <div>VCT: <i><?= $_SESSION['calculo_energetico']['vct']; ?></i></div>   
             </div>
         </div>
 

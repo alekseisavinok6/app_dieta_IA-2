@@ -29,7 +29,11 @@ $stmt = $conn->prepare(
     intolerancias, 
     enfermedades, 
     clasificacion, 
+    actividad,
     imc, 
+    geb,
+    get1,
+    vct,
     fecha_registro 
     FROM usuarios 
     WHERE correo = ?"
@@ -52,6 +56,7 @@ if ($resultado->num_rows === 1) {
         $_SESSION['peso'] = $usuario['peso'];
         $_SESSION['peso_ideal'] = $usuario['peso_ideal'];
         $_SESSION['clasificacion'] = $usuario['clasificacion'];
+        $_SESSION['actividad'] = $usuario['actividad'];
         $_SESSION['talla'] = $usuario['talla'];
         $_SESSION['edad'] = $usuario['edad'];
         $_SESSION['sexo'] = $usuario['sexo'];
@@ -59,6 +64,9 @@ if ($resultado->num_rows === 1) {
         $_SESSION['intolerancias'] = $usuario['intolerancias'];
         $_SESSION['enfermedades'] = $usuario['enfermedades'];
         $_SESSION['imc'] = $usuario['imc'];
+        $_SESSION['calculo_energetico']['geb'] = $usuario['geb'];
+        $_SESSION['calculo_energetico']['get1'] = $usuario['get1'];
+        $_SESSION['calculo_energetico']['vct'] = $usuario['vct'];
         $_SESSION['fecha_registro'] = $usuario['fecha_registro'];
 
         // Redirigir al index.php

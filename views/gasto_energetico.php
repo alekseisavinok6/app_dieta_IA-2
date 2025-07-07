@@ -2,93 +2,109 @@
 session_start();
 require_once '../db.php';
 
-if (!isset($_SESSION['peso_ideal'], $_SESSION['imc'], $_SESSION['clasificacion']) && isset($_SESSION['id'])) {
+$mensaje = $error = "";
+$peso = $_SESSION['peso'] ?? '';
+$talla = $_SESSION['talla'] ?? '';
+$edad = $_SESSION['edad'] ?? '';
+$sexo = $_SESSION['sexo'] ?? '';
+$actividad = $_SESSION['actividad'] ?? '';
+$peso_ideal = $_SESSION['peso_ideal'] ?? null;
 
-    if (!$conn->connect_error) {
-        $stmt = $conn->prepare(
-            "SELECT peso, talla, imc, peso_ideal, clasificacion 
-            FROM usuarios 
-            WHERE id = ?"
-        );
-        $stmt->bind_param("i", $_SESSION['id']);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $edad = intval($_POST['edad'] ?? 0);
+    $sexo = $_POST['sexo'] ?? '';
+    $actividad = $_POST['actividad'] ?? '';
 
-        if ($row = $resultado->fetch_assoc()) {
-            $_SESSION['peso'] = $row['peso'];
-            $_SESSION['talla'] = $row['talla'];
-            $_SESSION['imc'] = round($row['imc'], 2);
-            $_SESSION['peso_ideal'] = round($row['peso_ideal'], 2);
-            $_SESSION['clasificacion'] = $row['clasificacion'];
+    // Cálculo de gásto energético basal (GEB)
+    if ($peso && $talla && $edad && $sexo && $actividad) {
+        // Fórmula Harris-Benedict
+        if ($sexo === 'hombre') {
+            $geb = 66.5 + (13.75 * $peso) + (5.003 * $talla * 100) - (6.775 * $edad);
+        } else {
+            $geb = 655.1 + (9.563 * $peso) + (1.850 * $talla * 100) - (4.676 * $edad);
         }
 
-        $stmt->close();
-        //$conn->close();
-    }
-}
+        // Factores de actividad
+        $niveles = [
+            'sedentario' => ['factor' => 1.2, 'desc' => 'Sedentario'],
+            'ligera' => ['factor' => 1.375, 'desc' => 'Actividad ligera'],
+            'moderada' => ['factor' => 1.55, 'desc' => 'Actividad moderada'],
+            'intensa' => ['factor' => 1.725, 'desc' => 'Actividad intensa'],
+            'muy_intensa' => ['factor' => 1.9, 'desc' => 'Actividad muy intensa'],
+        ];
 
-// Recoger datos del formulario
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $peso = floatval($_POST['peso'] ?? 0);
-    $talla = floatval($_POST['talla'] ?? 0);
+        $factor = $niveles[$actividad]['factor'] ?? 1;
+        $nivel_actividad = $niveles[$actividad]['desc'] ?? 'Desconocido';
 
-    // Cálculo del IMC y peso ideal
-    if ($peso && $talla) {
-        $imc = $peso / pow($talla, 2);
-        $peso_ideal = 22 * pow($talla, 2);
+        // Calcular Gasto Energético Total (GET)
+        $get1 = $geb * $factor;
 
-        // Clasificación según OMS
-        if ($imc < 18.5) {
-            $clasificacion = "bajo peso";
-        } elseif ($imc < 25) {
-            $clasificacion = "peso normal";
-        } elseif ($imc < 30) {
-            $clasificacion = "sobrepeso";
-        } elseif ($imc < 35) {
-            $clasificacion = "obesidad grado I";
-        } elseif ($imc < 40) {
-            $clasificacion = "obesidad grado II";
-        } else {
-            $clasificacion = "obesidad grado III";
+        // Calcular VCT (usando peso ideal)
+        if ($peso_ideal !== null) {
+            if ($sexo === 'hombre') {
+                $vct = (66.5 + (13.75 * $peso_ideal) + (5 * ($talla * 100)) - (6.75 * $edad)) * $factor;
+            } elseif ($sexo === 'mujer') {
+                $vct = (655 + (9.563 * $peso_ideal) + (1.850 * ($talla * 100)) - (4.676 * $edad)) * $factor;
+            }
         }
 
         // Guardar en sesión
-        $_SESSION['peso'] = $peso;
-        $_SESSION['talla'] = $talla;
-        $_SESSION['imc'] = round($imc, 2);
-        $_SESSION['peso_ideal'] = round($peso_ideal, 2);
-        $_SESSION['clasificacion'] = $clasificacion;
+        $_SESSION['edad'] = $edad;
+        $_SESSION['sexo'] = $sexo;
+        $_SESSION['actividad'] = $actividad;
+        $_SESSION['calculo_energetico'] = [
+            'geb' => round($geb, 2),
+            'get1' => round($get1, 2),
+            'vct' => round($vct, 2),
+            'nivel_actividad' => $nivel_actividad
+        ];
 
-        // Guardar en base de datos
-        $id = $_SESSION['id'];
 
         if ($conn->connect_error) {
-            $error = "Error de conexión: " . $conn->connect_error;
+            $error = "Error de conexión con la base de datos: " . $conn->connect_error;
         } else {
+            $id = $_SESSION['id'];
             $stmt = $conn->prepare(
                 "UPDATE usuarios
-                    SET peso = ?, 
-                    talla = ?, 
-                    imc = ?, 
-                    peso_ideal = ?, 
-                    clasificacion = ? 
-                    WHERE id = ?"
+                SET 
+                edad = ?, 
+                sexo = ?, 
+                actividad = ?, 
+                geb = ?, 
+                get1 = ?,
+                vct = ?
+                WHERE id = ?"
             );
-            $stmt->bind_param("ddddsi", $peso, $talla, $imc, $peso_ideal, $clasificacion, $id);
-
-            if (!$stmt->execute()) {
-                $error = "Error al guardar los datos: " . $stmt->error;
+            $stmt->bind_param(
+                "issdddi",
+                $edad,
+                $sexo,
+                $actividad,
+                $geb,
+                $get1,
+                $vct,
+                $id
+            );
+            if ($stmt->execute()) {
+                //$mensaje .= "Datos actualizados correctamente en la base de datos.";
+            } else {
+                $error = "Error al actualizar los datos: " . $stmt->error;
             }
 
             $stmt->close();
-            $conn->close();
+            //$conn->close();
         }
 
-        //$mensaje = "Estudio antropométrico calculado correctamente.";
+        //$mensaje = "Cálculo realizado correctamente.";
     } else {
-        $error = "Por favor, ingresa peso y talla válidos.";
+        $error = "Por favor, completa todos los campos correctamente.";
     }
 }
+
+$geb = $_SESSION['calculo_energetico']['geb'] ?? null;
+$get1 = $_SESSION['calculo_energetico']['get1'] ?? null;
+$vct = $_SESSION['calculo_energetico']['vct'] ?? null;
+$nivel_actividad = $_SESSION['calculo_energetico']['nivel_actividad'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -97,12 +113,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Estudio Antropométrico - DietaIA</title>
+    <title>Cálculo GEB, GET y VCT - DietaIA</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="shortcut icon" href="../imgs/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
 </head>
+
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+</script>
 
 <body>
     <!-- Navbar -->
@@ -123,39 +144,67 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Contenido -->
     <div class="container my-5">
         <div class="form-section" style="max-width: 450px;">
-            <h3 class="text-center mb-4">Paso 1: Estudio antropométrico <i class="fa-solid fa-clipboard"></i></h3>
+            <h3 class="text-center mb-4"><i>Paso 2: Cálculo del gasto energético</i>
+            <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Estimación del gasto calórico según edad, peso, altura y actividad física"></i>
+            </h3>
             <?php if (isset($mensaje)): ?>
                 <p style="color:green;"><?= $mensaje ?></p>
             <?php elseif (isset($error)): ?>
                 <p style="color:red;"><?= $error ?></p>
             <?php endif; ?>
-            <form action="estudio_antropometrico.php" method="POST">
+            <form action="gasto_energetico.php" method="POST">
                 <div class="mb-4">
-                    <label for="peso" class="form-label">Peso (kg)</label>
-                    <input type="number" step="0.01" name="peso" id="peso" class="form-control" required
-                        value="<?= $_SESSION['peso'] ?>">
+                    <label for="edad" class="form-label"><i>Edad:</i></label>
+                    <input type="number" name="edad" id="edad" class="form-control" required
+                        value="<?= $_SESSION['edad'] ?>">
                 </div>
 
                 <div class="mb-4">
-                    <label for="talla" class="form-label">Talla (m)</label>
-                    <input type="number" step="0.01" name="talla" id="talla" class="form-control" required
-                        value="<?= $_SESSION['talla'] ?>">
+                    <label for="sexo" class="form-label"><i>Sexo biológico:</i></label>
+                    <select class="form-select" id="sexo" name="sexo" required>
+                        <option value="">Selecciona</option>
+                        <option value="hombre" <?= $sexo === 'hombre' ? 'selected' : '' ?>>Hombre 👨</option>
+                        <option value="mujer" <?= $sexo === 'mujer' ? 'selected' : '' ?>>Mujer 👧</option>
+                    </select>
                 </div>
 
-                <div><strong>IMC:</strong> <?= $_SESSION['imc'] ?></div>
-                <div><strong>Peso Ideal:</strong> <?= $_SESSION['peso_ideal'] ?> kg</div>
-                <div><strong>Clasificación:</strong> <?= ucfirst($_SESSION['clasificacion']) ?></div><br>
+                <div class="mb-4">
+                    <label for="actividad" class="form-label"><i>Nivel de actividad física:</i></label>
+                    <select class="form-select" name="actividad" required>
+                        <option value="">Seleccione...</option>
+                        <option value="sedentario" <?= $actividad === 'sedentario' ? 'selected' : '' ?>>Sedentario 🧘🏽‍♂️</option>
+                        <option value="ligera" <?= $actividad === 'ligera' ? 'selected' : '' ?>>Actividad ligera 🤹🏻‍♂️</option>
+                        <option value="moderada" <?= $actividad === 'moderada' ? 'selected' : '' ?>>Actividad moderada 🤸🏻‍♂️</option>
+                        <option value="intensa" <?= $actividad === 'intensa' ? 'selected' : '' ?>>Actividad intensa 🚴🏻‍♀️</option>
+                        <option value="muy intensa" <?= $actividad === 'muy_intensa' ? 'selected' : '' ?>>Actividad muy intensa 🚴🏻‍♀️🚴🏻‍♀️</option>
+                    </select>
+                </div>
+
+                <div><i>GEB:</i> <?= number_format($geb, 2, ',', '.') ?> kcal/día
+                <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" 
+                title="Gasto Energético Basal (GEB): calorías que necesitas en reposo"></i>
+                </div>
+                <div><i>GET:</i> <?= number_format($get1, 2, ',', '.') ?> kcal/día
+                <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" 
+                title="Gasto Energético Total (GET): GEB multiplicado por tu nivel de actividad física"></i>
+                </div>
+                <div><i>VCT:</i> <?= number_format($vct, 2, ',', '.') ?> kcal/día
+                <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" 
+                title="Valor Calórico Total (VCT): estimación de calorías diarias usando tu peso ideal"></i>
+                </div><br>
 
                 <div class="text-start">
                     <button type="submit" class="btn btn-warning"><i class="fa-solid fa-calculator"></i> Calcular</button>
                 </div><br>
                 <div class="text-start">
-                    <a href="calcular_geb.php"><button class="btn btn-light btn-sm">
-                    <i class="fa-regular fa-hand-point-right"></i> Siguiente paso</button></a>
+                    <a href="generar_dieta.php" class="btn btn-light btn-sm">
+                        <i class="fa-regular fa-hand-point-right"></i> Siguiente paso
+                    </a>
                 </div><br>
                 <div class="text-start">
-                    <a href="estudio_antropometrico.php"><button class="btn btn-light btn-sm">
-                    <i class="fa-regular fa-hand-point-left"></i> Atrás</button></a>
+                    <a href="estudio_antropometrico.php" class="btn btn-light btn-sm">
+                        <i class="fa-regular fa-hand-point-left"></i> Atrás
+                    </a>
                 </div>
             </form>
         </div>
