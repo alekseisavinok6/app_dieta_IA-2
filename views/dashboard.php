@@ -41,7 +41,7 @@ if (!isset($_SESSION['id'])) {
     <!-- Contenido -->
         <div class="container my-5">
             <div class="form-section">
-                <h3 class="text-center"><i class="fa-solid fa-user"></i> Información personal:</h3><br>
+                <h3 class="text-center"><i class="fa-regular fa-id-card"></i> Información personal:</h3><br>
                 <div>Alta: <i><?= $_SESSION['fecha_registro']; ?></i></div><br> 
                 <div>Id: <i><?= $_SESSION['id']; ?></i></div>
                 <div>Nombre: <i><?= $_SESSION['nombre']; ?></i></div>
