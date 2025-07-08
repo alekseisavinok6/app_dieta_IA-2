@@ -33,7 +33,7 @@ session_start();
             color: #2c3e50;
             text-align: center;
             margin-bottom: 25px;
-            font-size: 2em;
+            font-size: 1.8em;
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 10px;
         }
@@ -45,7 +45,7 @@ session_start();
             padding: 20px;
             border-radius: 8px;
             border: 1px solid #ddd;
-            font-size: 1.05em;
+            font-size: 1em;
             line-height: 1.7;
             margin-bottom: 30px;
         }
@@ -60,9 +60,15 @@ session_start();
         }
 
         .btn-group {
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            /* Espacio entre los botones */
             margin-top: 30px;
+            flex-wrap: wrap;
+            /* Para que se acomoden bien en pantallas pequeñas */
         }
+
 
         .btn-group .btn {
             display: inline-block;

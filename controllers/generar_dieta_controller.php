@@ -203,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['generarDieta'])) {
 
         // Guardamos la dieta generada en la sesión para mostrarla en dieta.php
         $_SESSION['dieta_generada'] = $dieta_generada;
-        $_SESSION['mensaje_dieta_app'] = "Dieta generada con éxito.";
+        //$_SESSION['mensaje_dieta_app'] = "Dieta generada con éxito.";
     }
 
     // --- 6. Redirigir de nuevo a dieta.php para mostrar los resultados ---
