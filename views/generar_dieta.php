@@ -96,9 +96,12 @@ unset($_SESSION['error_dieta_app']);
         <div class="form-section" style="max-width: 450px;">
             <h3 class="text-center mb-4"><i>Paso 3: Generación de dietas con IA</i></h3>
             <div>
-                Patologías: <?= $_SESSION['enfermedades'] ?><br>
-                Alergias: <?= $_SESSION['alergenos'] ?><br>
-                Intolerancias: <?= $_SESSION['intolerancias'] ?>
+                🥵<i style="font-size: 17px;"> Patologías:</i> <strong style="color: crimson;">
+                    <?= $_SESSION['enfermedades'] ?></strong><br>
+                🥶<i style="font-size: 17px;"> Alergias:</i></i> <strong style="color: darkblue;">
+                    <?= $_SESSION['alergenos'] ?></strong><br>
+                🤢<i style="font-size: 17px;"> Intolerancias:</i> <strong style="color: darkgreen;">
+                    <?= $_SESSION['intolerancias'] ?></strong>
             </div>
             <?php if (isset($mensaje)): ?>
                 <p style="color:green;"><?= $mensaje ?></p>

@@ -77,8 +77,8 @@
                         <label for="sexo" class="form-label">Sexo biológico</label>
                         <select class="form-select" id="sexo" name="sexo" required>
                             <option value="">Selecciona</option>
-                            <option value="hombre">Hombre</option>
-                            <option value="mujer">Mujer</option>
+                            <option value="hombre">Hombre 👨</option>
+                            <option value="mujer">Mujer 👧</option>
                         </select>
                     </div>
 
