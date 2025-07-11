@@ -130,7 +130,7 @@ $nivel_actividad = $_SESSION['calculo_energetico']['nivel_actividad'] ?? null;
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="../index.php">
-                <img src="../imgs/logo-3-2.png" alt="Dieta-IA" width="140" class="me-3">
+                <img src="../imgs/logo3.png" alt="Dieta-IA" width="150" class="me-3">
             </a>
             <div class="ms-auto">
                 <a href="../index.php" class="btn btn-outline-secondary">
@@ -194,7 +194,7 @@ $nivel_actividad = $_SESSION['calculo_energetico']['nivel_actividad'] ?? null;
                 </div><br>
 
                 <div class="text-start">
-                    <button type="submit" class="btn btn-warning"><i class="fa-solid fa-calculator"></i> Calcular</button>
+                    <button type="submit" class="btn btn-info"><i class="fa-solid fa-calculator"></i> Calcular</button>
                 </div><br>
                 <div class="text-start">
                     <a href="generar_dieta.php" class="btn btn-light btn-sm">

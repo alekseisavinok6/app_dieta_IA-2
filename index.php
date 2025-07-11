@@ -21,7 +21,7 @@ session_start();
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <img src="imgs/logo-3-2.png" alt="Dieta-IA" width="140" class="me-3">
+                <img src="imgs/logo3.png" alt="Dieta-IA" width="150" class="me-3">
             </a>
             <?php if (isset($_SESSION['id'])): ?>
                 <div class="ms-auto">
@@ -58,33 +58,52 @@ session_start();
                         <p class="mt-4">
                             Con Dieta-IA puedes:
                         </p>
+                        <?php if (isset($_SESSION['id'])): ?>
                         <ul class="list-unstyled">
                             <li class="d-flex align-items-center mb-3">
-                                <div class="icon-circle bg-primary text-white me-3">
+                                <div class="icon-circle bg-info text-white me-3">
                                     <i class="fas fa-seedling fa-lg"></i>
                                 </div>
                                 Crear planes alimenticios adaptados a tus objetivos
                             </li>
                             <li class="d-flex align-items-center mb-3">
-                                <div class="icon-circle bg-danger text-white me-3">
+                                <div class="icon-circle bg-info text-white me-3">
                                     <i class="fas fa-allergies fa-lg"></i>
                                 </div>
                                 Tener en cuenta alergias, intolerancias y enfermedades
                             </li>
                             <li class="d-flex align-items-center mb-3">
-                                <div class="icon-circle bg-success text-white me-3">
+                                <div class="icon-circle bg-info text-white me-3">
                                     <i class="fas fa-leaf fa-lg"></i>
                                 </div>
                                 La vida saludable basado en la dieta mediterránea
                             </li>
                         </ul>
-
-                        <?php if (isset($_SESSION['id'])): ?>
-                            <a href="views/estudio_antropometrico.php" class="btn btn-lg btn-warning mt-4">
+                            <a href="views/estudio_antropometrico.php" class="btn btn-md btn-info mt-4">
                                 <i class="fa-solid fa-lock-open"></i> Crear una dieta
                             </a>
                         <?php else: ?>
-                            <a href="#" class="btn btn-lg btn-secondary mt-4">
+                            <ul class="list-unstyled">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="icon-circle bg-secondary text-white me-3">
+                                    <i class="fas fa-seedling fa-lg"></i>
+                                </div>
+                                Crear planes alimenticios adaptados a tus objetivos
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="icon-circle bg-secondary text-white me-3">
+                                    <i class="fas fa-allergies fa-lg"></i>
+                                </div>
+                                Tener en cuenta alergias, intolerancias y enfermedades
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="icon-circle bg-secondary text-white me-3">
+                                    <i class="fas fa-leaf fa-lg"></i>
+                                </div>
+                                La vida saludable basado en la dieta mediterránea
+                            </li>
+                        </ul>
+                            <a href="#" class="btn btn-md btn-secondary mt-4">
                                 <i class="fa-solid fa-lock"></i>
                             </a>
                         <?php endif; ?>

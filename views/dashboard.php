@@ -27,7 +27,7 @@ if (!isset($_SESSION['id'])) {
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="../index.php">
-                <img src="../imgs/logo-3-2.png" alt="Dieta-IA" width="140" class="me-3">
+                <img src="../imgs/logo3.png" alt="Dieta-IA" width="150" class="me-3">
             </a>
             <div class="ms-auto">
                 <a href="../index.php" class="btn btn-outline-secondary me-2">
