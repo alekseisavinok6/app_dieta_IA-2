@@ -34,7 +34,14 @@
     <main>
         <div class="container my-5">
             <div class="form-section">
-                <h3 class="text-center mb-4">Crea tu cuenta</h3>
+                <div class="row align-items-start mb-4">
+                    <div class="col-md-8">
+                        <h3 class="text-start"><i>Crea tu cuenta</i></h3>
+                    </div>
+                    <div class="col-md-4 text-md-end text-center">
+                        <img src="../imgs/registro.png" alt="Icono" class="img-fluid" style="max-width: 170px;">
+                    </div>
+                </div>
 
                 <form action="../controllers/registro_controller.php" method="POST">
                     <!-- Nombre y Apellido -->

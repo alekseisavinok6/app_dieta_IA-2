@@ -59,10 +59,26 @@ session_start();
                             Con Dieta-IA puedes:
                         </p>
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-check text-success me-2"></i> Crear planes alimenticios adaptados a tus objetivos</li>
-                            <li><i class="fa fa-check text-success me-2"></i> Tener en cuenta alergias, intolerancias y enfermedades</li>
-                            <li><i class="fa fa-check text-success me-2"></i> Seguir un estilo de vida saludable basado en la dieta mediterránea</li>
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="icon-circle bg-primary text-white me-3">
+                                    <i class="fas fa-seedling fa-lg"></i>
+                                </div>
+                                Crear planes alimenticios adaptados a tus objetivos
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="icon-circle bg-danger text-white me-3">
+                                    <i class="fas fa-allergies fa-lg"></i>
+                                </div>
+                                Tener en cuenta alergias, intolerancias y enfermedades
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="icon-circle bg-success text-white me-3">
+                                    <i class="fas fa-leaf fa-lg"></i>
+                                </div>
+                                La vida saludable basado en la dieta mediterránea
+                            </li>
                         </ul>
+
                         <?php if (isset($_SESSION['id'])): ?>
                             <a href="views/estudio_antropometrico.php" class="btn btn-lg btn-warning mt-4">
                                 <i class="fa-solid fa-lock-open"></i> Crear una dieta

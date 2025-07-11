@@ -92,6 +92,7 @@ unset($_SESSION['error_dieta_app']);
 
     <!-- Contenido -->
     <div class="container my-5">
+        <img src="../imgs/paso3.png" alt="Icono" class="img-fluid float-end ms-3" style="max-width: 170px;">
         <div class="form-section" style="max-width: 450px;">
             <h3 class="text-center mb-4"><i>Paso 3: Generación de dietas con IA</i></h3>
             <div>

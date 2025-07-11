@@ -28,8 +28,10 @@
 
     <!-- Contenido -->
     <div class="container my-5">
-        <div class="form-section" style="max-width: 450px;">
-            <h3 class="text-center mb-4">Inicia sesión</h3>
+        <div class="form-section" style="max-width: 480px;">
+            <img src="../imgs/login2.png" alt="Icono" class="img-fluid float-end ms-3" style="max-width: 170px;">
+            <h3 class="text-start mb-4"><i>Inicia sesión</i></h3>
+            
             <form action="../controllers/login_controller.php" method="POST">
                 <div class="mb-4">
                     <label for="correo" class="form-label">Correo electrónico</label>

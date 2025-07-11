@@ -142,7 +142,8 @@ $nivel_actividad = $_SESSION['calculo_energetico']['nivel_actividad'] ?? null;
 
     <!-- Contenido -->
     <div class="container my-5">
-        <div class="form-section" style="max-width: 450px;">
+        <img src="../imgs/paso2.png" alt="Icono" class="img-fluid float-end ms-3" style="max-width: 170px;">
+        <div class="form-section" style="max-width: 500px;">
             <h3 class="text-center mb-4"><i>Paso 2: Cálculo del gasto energético</i>
             <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Estimación del gasto calórico según edad, peso, altura y actividad física"></i>
             </h3>

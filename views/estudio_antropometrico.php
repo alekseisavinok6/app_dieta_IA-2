@@ -126,9 +126,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <!-- Contenido -->
     <div class="container my-5">
-        <div class="form-section" style="max-width: 450px;">
-            <h3 class="text-center mb-4"><i>Paso 1: Estudio antropométrico</i>
-            <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Medición de tu peso, talla e IMC para calcular tus necesidades nutricionales"></i>
+        <img src="../imgs/paso1.png" alt="Icono" class="img-fluid float-end ms-3" style="max-width: 170px;">
+        <div class="form-section" style="max-width: 500px;">
+            <h3 class="text-start mb-4"><i>Paso 1: Estudio antropométrico</i>
+                <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Medición de tu peso, talla e IMC para calcular tus necesidades nutricionales"></i>
             </h3>
             <?php if (isset($mensaje)): ?>
                 <p style="color:green;"><?= $mensaje ?></p>
@@ -149,17 +150,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
                 <div>
-                    <i>IMC:</i> 
+                    <i>IMC:</i>
                     <?= $_SESSION['imc'] ?>
                     <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Índice de Masa Corporal (IMC) es la relación entre tu peso y tu altura"></i>
                 </div>
                 <div>
-                    <i>Peso ideal:</i> 
+                    <i>Peso ideal:</i>
                     <?= $_SESSION['peso_ideal'] ?> kg
                     <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Peso estimado en el que se considera que tienes un estado de salud óptimo"></i>
                 </div>
                 <div>
-                    <i>Clasificación OMC:</i> 
+                    <i>Clasificación OMC:</i>
                     <?= ucfirst($_SESSION['clasificacion']) ?>
                     <i class="fa-solid fa-circle-question text-info" data-bs-toggle="tooltip" title="Categoría de tu peso según la Organización Mundial de la Salud (OMS) (ej: normal, sobrepeso, obesidad...)"></i>
                 </div><br>
@@ -168,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div><br>
                 <div class="text-start">
                     <a href="gasto_energetico.php" class="btn btn-light btn-sm">
-                    <i class="fa-regular fa-hand-point-right"></i> Siguiente paso
+                        <i class="fa-regular fa-hand-point-right"></i> Siguiente paso
                     </a>
                 </div>
             </form>
