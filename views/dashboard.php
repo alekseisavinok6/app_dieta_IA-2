@@ -14,7 +14,7 @@ if (!isset($_SESSION['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Panel de Usuario - DietaIA</title>
+    <title>Panel de Usuario - Dieta-IA</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="shortcut icon" href="../imgs/favicon.ico" type="image/x-icon">
@@ -27,8 +27,7 @@ if (!isset($_SESSION['id'])) {
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="../index.php">
-                <img src="../imgs/logo-2.png" alt="DietaIA" width="46" class="me-3">
-                <i class="logo">DietaIA</i>
+                <img src="../imgs/logo-3-2.png" alt="Dieta-IA" width="140" class="me-3">
             </a>
             <div class="ms-auto">
                 <a href="../index.php" class="btn btn-outline-secondary me-2">
@@ -67,7 +66,7 @@ if (!isset($_SESSION['id'])) {
     <!-- Footer -->
     <footer>
         <div class="text-center p-3">
-            <p class="mb-1">© 2025 <strong>DietaIA</strong>. Reservados todos los derechos.</p>
+            <p class="mb-1">© 2025 <strong>Dieta-IA</strong>. Reservados todos los derechos.</p>
             📞 +34 123 456 789 | 📧 info@dieta-ia.com | 📍 Calle Ficticia 123, 28013 Madrid, España
         </div>
     </footer>
