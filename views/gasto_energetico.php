@@ -132,6 +132,7 @@ $nivel_actividad = $_SESSION['calculo_energetico']['nivel_actividad'] ?? null;
             <a class="navbar-brand" href="../index.php">
                 <img src="../imgs/logo3.png" alt="Dieta-IA" width="150" class="me-3">
             </a>
+            <div class="user"><i>Usuario: <?= $_SESSION['nombre'] ?> <?= $_SESSION['apellido'] ?></i></div>
             <div class="ms-auto">
                 <a href="../index.php" class="btn btn-outline-secondary">
                     <i class="fas fa-home"></i> Volver al inicio

@@ -117,9 +117,9 @@ session_start();
 <body>
     <div class="container">
         <?php if (isset($_SESSION['dieta_generada'])): ?>
-            <img src="../imgs/logo-2.png" alt="DietaIA" width="46" class="me-3">
-            <i class="logo">DietaIA</i>
+            <img src="../imgs/logo3.png" alt="Dieta-IA" width="150" class="me-3"><br>
             <h2><i>Tu dieta personalizada </i><i class="fa-solid fa-mug-hot"></i></h2>
+            <div><i>Usuario: <?= $_SESSION['nombre'] ?> <?= $_SESSION['apellido'] ?></i></div>
 
             <div class="dieta-content">
                 <?= htmlspecialchars($_SESSION['dieta_generada']) ?>

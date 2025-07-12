@@ -24,6 +24,7 @@ session_start();
                 <img src="imgs/logo3.png" alt="Dieta-IA" width="150" class="me-3">
             </a>
             <?php if (isset($_SESSION['id'])): ?>
+                <div class="user"><i>Usuario: <?= $_SESSION['nombre'] ?> <?= $_SESSION['apellido'] ?></i></div>
                 <div class="ms-auto">
                     <a href="views/dashboard.php" class="btn btn-outline-info me-2">
                         <i class="fa-solid fa-gauge-simple-high"></i> Panel de usuario
